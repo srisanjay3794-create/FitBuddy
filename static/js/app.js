@@ -1,0 +1,1 @@
+console.log('FitBuddy loaded');

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>FitBuddy Plan</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="container wide">
+    <h1>FitBuddy Plan</h1>
+
+    <div class="card">
+        <h2>User Information</h2>
+        <p><strong>Name:</strong> {{ user.name }}</p>
+        <p><strong>User ID:</strong> {{ user.user_id }}</p>
+        <p><strong>Age:</strong> {{ user.age }}</p>
+        <p><strong>Weight:</strong> {{ user.weight }} kg</p>
+        <p><strong>Goal:</strong> {{ user.goal }}</p>
+        <p><strong>Intensity:</strong> {{ user.intensity }}</p>
+    </div>
+
+    <div class="card">
+        <h2>7-Day Workout Plan</h2>
+        <pre>{{ workout_plan }}</pre>
+    </div>
+
+    <div class="card">
+        <h2>Nutrition / Recovery Tip</h2>
+        <p>{{ nutrition_tip }}</p>
+    </div>
+
+    <div class="card">
+        <h2>Update Plan with Feedback</h2>
+        <form action="/submit-feedback" method="post">
+            <input type="hidden" name="user_id" value="{{ user.user_id }}">
+            <textarea name="feedback" rows="5" placeholder="Example: Add more cardio and one extra recovery day." required></textarea>
+            <button type="submit">Update Plan</button>
+        </form>
+    </div>
+
+    <a class="admin-link" href="/">Create Another Plan</a>
+</div>
+</body>
+</html>

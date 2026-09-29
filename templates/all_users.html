@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>FitBuddy Admin Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="container wide">
+    <h1>Admin / Coach Dashboard</h1>
+    {% if users %}
+    {% for user in users %}
+    <div class="card">
+        <h2>{{ user.name }} ({{ user.user_id }})</h2>
+        <p>{{ user.age }} years | {{ user.weight }} kg | {{ user.goal }} | {{ user.intensity }}</p>
+        {% for plan in user.plans %}
+        <h3>Original Plan</h3>
+        <pre>{{ plan.original_plan }}</pre>
+        {% if plan.updated_plan %}
+        <h3>Updated Plan</h3>
+        <pre>{{ plan.updated_plan }}</pre>
+        <p><strong>Feedback:</strong> {{ plan.feedback }}</p>
+        {% endif %}
+        {% endfor %}
+        <form action="/delete-user/{{ user.user_id }}" method="post" onsubmit="return confirm('Delete this user and plans?');">
+            <button class="danger" type="submit">Delete User</button>
+        </form>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="card"><p>No users found.</p></div>
+    {% endif %}
+    <a class="admin-link" href="/">Back to FitBuddy</a>
+</div>
+</body>
+</html>

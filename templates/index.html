@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>FitBuddy - AI Fitness Plan Generator</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>FitBuddy</h1>
+    <p class="subtitle">AI Fitness Plan Generator</p>
+
+    <form action="/generate-workout" method="post">
+        <label>Name</label>
+        <input type="text" name="name" required>
+
+        <label>User ID</label>
+        <input type="text" name="user_id" required>
+
+        <label>Age</label>
+        <input type="number" name="age" min="1" max="119" required>
+
+        <label>Weight (kg)</label>
+        <input type="number" name="weight" min="1" max="499" step="0.1" required>
+
+        <label>Fitness Goal</label>
+        <select name="goal" required>
+            <option value="weight loss">Weight Loss</option>
+            <option value="muscle gain">Muscle Gain</option>
+            <option value="general wellness">General Wellness</option>
+            <option value="flexibility">Flexibility</option>
+        </select>
+
+        <label>Workout Intensity</label>
+        <select name="intensity" required>
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+        </select>
+
+        <button type="submit">Generate 7-Day Plan</button>
+    </form>
+
+    <a class="admin-link" href="/view-all-users">Admin / Coach Dashboard</a>
+</div>
+<script src="/static/js/app.js"></script>
+</body>
+</html>

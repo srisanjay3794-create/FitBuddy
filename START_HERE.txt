@@ -1,0 +1,23 @@
+FITBUDDY - Windows 7 + Python 3.8
+
+1. Open this project folder in VS Code.
+2. Open Terminal in the project root.
+3. Put your own Gemini API key in .env:
+   GEMINI_API_KEY=YOUR_ACTUAL_GEMINI_API_KEY
+4. Install dependencies:
+   py -m pip install -r requirements.txt
+5. Start the server:
+   py -m uvicorn app.main:app --reload
+6. Open:
+   http://127.0.0.1:8000
+
+API docs:
+   http://127.0.0.1:8000/docs
+
+IMPORTANT:
+- This final build does NOT use demo/fallback workout generation.
+- It does NOT require google-genai, because that SDK requires a newer Python version than Python 3.8.
+- Gemini calls use the Gemini REST API directly, so the project remains compatible with Python 3.8.
+- Do not upload .env or your real API key to GitHub.
+
+If a Gemini model is unavailable for your API project, change WORKOUT_MODEL and NUTRITION_MODEL in .env to a model available to your key.
